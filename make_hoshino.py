@@ -1,4 +1,4 @@
-#wordcloudで適用するために、星野源さんの上半身画像を青白くする
+#wordcloudで適用するために、星野源さん上半身画像の背景をopencvで消す
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,16 +10,18 @@ MASK_DILATE_ITER = 10
 MASK_ERODE_ITER = 10
 MASK_COLOR = (1.0,0.0,0.0) 
 
-img = cv2.imread('hoshino2.jpg') #青白くしたい画像(肖像権のため載せない)
+img = cv2.imread('hoshino2.jpg') #グレイにしたい画像(肖像権のため載せない)
 img1 = img[0 : 2100, 0: 2650]
-gray = cv2.cvtColor(img1,cv2.COLOR_BGR2GRAY)
+gray = cv2.cvtColor(img1,cv2.COLOR_BGR2GRAY)  #グレースケールの画像を用意
 
-edges = cv2.Canny(gray, CANNY_THRESH_1, CANNY_THRESH_2)
+#エッジを見つける
+edges = cv2.Canny(gray, CANNY_THRESH_1, CANNY_THRESH_2) #グレースケール
 edges = cv2.dilate(edges, None)
 edges = cv2.erode(edges, None)
 contour_info = []
 contours, _ = cv2.findContours(edges, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
 
+#輪郭を見つける
 for c in contours:
         contour_info.append((
         c,
@@ -29,6 +31,7 @@ for c in contours:
 contour_info = sorted(contour_info, key=lambda c: c[2], reverse=True)
 max_contour = contour_info[0]
 
+#一番大きい輪郭を使ってマスクを作る
 mask = np.zeros(edges.shape)
 cv2.fillConvexPoly(mask, max_contour[0], (255))
 
