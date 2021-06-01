@@ -1,4 +1,5 @@
 # hoshino_scraping
+scraping.py > wordcloud.py > make_hoshino.py > picture_wc.py の順で実行
 ウェブスクレイピングで星野源さんの歌詞を抜き出し、星野源さんのシルエットに歌詞を表示
 # scraping.py
 星野源さんの歌詞を「歌ネット」からウェブスクレイピングで抜き出すスクリプト
