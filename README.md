@@ -13,4 +13,4 @@ hoshinoface_lyrics.pngが出来る
 # hoshino_lyrics.png
 楽曲で多く使用されている単語をwordcloudで表示した画像　ダウンロードから参照可能
 # hoshinoface_lyrics.png
-楽曲で多く使用されている単語をwordcloudで星野源さんのシルエットに表示した画像　ダウンロードから参照可能
+楽曲で多く使用されている単語を星野源さんのシルエットに表示した画像　ダウンロードから参照可能
